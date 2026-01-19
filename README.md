@@ -510,23 +510,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ### Phase 2 Part 1: Core Architecture & Data Flow ("The Brain")
 
-#### 1. High-Level Architecture Diagram
-
-```mermaid
-graph TD
-    A[📂 MIMIC-IV Dataset CSVs] -->|Raw Data Streaming| B(⚙️ Time-Shift Replay Engine)
-    B -->|Shifted to 2026| C{⚡ FastAPI Backend}
-    
-    subgraph "The Brain (Backend)"
-    C -->|Store/Retrieve| D[(🗄️ Supabase Database)]
-    C -->|Clean & Validate| E[🧩 Feature Store (Pydantic)]
-    C -->|Calculate| F[📈 Forecasting Engine]
-    end
-    
-    C -->|JSON API Response| G[💻 Frontend Dashboard]
-```
-
-#### 2. Detailed Implementation Breakdown
+#### 1. Detailed Implementation Breakdown
 
 **1️⃣ Core Setup & Infrastructure**
 - Framework: FastAPI + uv initialized
@@ -569,7 +553,7 @@ These endpoints power the live charts on the dashboard:
 | `/api/v1/forecasts/er-arrivals` | Pattern Simulation | ER Arrivals Chart (Live Trend) |
 | `/api/v1/patients` | patients.csv + admissions.csv | Patient List Table |
 
-#### 3. Data Flow: From CSV to Dashboard
+#### 2. Data Flow: From CSV to Dashboard
 
 ```
 [SOURCE: icustays.csv]
